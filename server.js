@@ -1,11 +1,22 @@
 const express = require('express');
+const cors = require('cors');
+
+const app = express();
 const { Sequelize } = require('sequelize');
 
 const nurseriesRouter = require('./routes/nurseries');
+
+app.use(cors({
+  origin: 'http://localhost:3001', //アクセス許可するオリジン
+  credentials: true, //レスポンスヘッダーにAccess-Control-Allow-Credentials追加
+  optionsSuccessStatus: 200 //レスポンスstatusを200に設定
+}))
+
 app.use('/api/nurseries', nurseriesRouter);
+
 //APInurseriesのパスリクをnursery.jsで処理
 
-const app = express();
+
 const port = process.env.PORT || 3000;
 
 // SQLiteへの接続設定
@@ -22,14 +33,7 @@ sequelize.authenticate()
     console.error('Unable to connect to SQLite:', err);
   });
 
-// 省略: ミドルウェアの設定やルーティングの設定
-
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
 
 app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Server is running on port ${port}`);
 });

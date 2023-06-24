@@ -6,8 +6,11 @@ module.exports = {
       {
         name: 'サンプル保育園',
         prefecture: '東京都',
-        city: '新宿区',
-        corporation: 'サンプル法人',
+        city: '渋谷区',
+        operator: '株式会社',
+        salary:"月給20万〜",
+        employmentType:"正社員",
+        
       },
     ], {});
   },

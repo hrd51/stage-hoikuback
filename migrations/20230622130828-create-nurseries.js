@@ -19,7 +19,13 @@ module.exports = {
       city:{
         type: Sequelize.STRING,
       },
-      corporation: {
+      operator: {
+        type: Sequelize.STRING,
+      },
+      salary: {
+        type: Sequelize.STRING,
+      },
+      employmentType: {
         type: Sequelize.STRING,
       },
   
