@@ -28,6 +28,9 @@ module.exports = {
       employmentType: {
         type: Sequelize.STRING,
       },
+      homepage:{
+        type: Sequelize.STRING,
+      },
   
     });
   },
