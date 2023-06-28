@@ -1,17 +1,23 @@
 {
   "development": {
-    "use_env_variable": "postgres://test_datahoiku_user:PXNIlua0KXejDyyxS3w8BIqTBOm9JjHy@dpg-cidsos15rnukltl8u5m0-a/test_datahoiku",
+    "use_env_variable": "DATABASE_URL",
     "dialect": "postgres",
     "protocol": "postgres"
   },
   "test": {
-    "use_env_variable": "postgres://test_datahoiku_user:PXNIlua0KXejDyyxS3w8BIqTBOm9JjHy@dpg-cidsos15rnukltl8u5m0-a/test_datahoiku",
+    "use_env_variable": "DATABASE_URL",
     "dialect": "postgres",
     "protocol": "postgres"
   },
   "production": {
     "use_env_variable": "DATABASE_URL",
     "dialect": "postgres",
-    "protocol": "postgres"
+    "protocol": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }
