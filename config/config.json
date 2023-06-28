@@ -1,19 +1,17 @@
 {
   "development": {
-    "dialect": "sqlite",
-    "storage": "./db.development.sqlite"
+    "use_env_variable": "postgres://test_datahoiku_user:PXNIlua0KXejDyyxS3w8BIqTBOm9JjHy@dpg-cidsos15rnukltl8u5m0-a/test_datahoiku",
+    "dialect": "postgres",
+    "protocol": "postgres"
   },
   "test": {
-    "dialect": "sqlite",
-    "storage": "./db.test.sqlite"
+    "use_env_variable": "postgres://test_datahoiku_user:PXNIlua0KXejDyyxS3w8BIqTBOm9JjHy@dpg-cidsos15rnukltl8u5m0-a/test_datahoiku",
+    "dialect": "postgres",
+    "protocol": "postgres"
   },
-  
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production", 
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-    
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "protocol": "postgres"
   }
 }

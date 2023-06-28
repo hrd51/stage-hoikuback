@@ -21,11 +21,20 @@ app.use('/api/favorites', favoritesRouter);
 
 const port = process.env.PORT || 3000;
 
-// SQLiteへの接続設定
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: './db.development.sqlite'
+// PostgreSQLへの接続設定
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
+  protocol: 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  },
+  logging: false,
 });
+
+
 
 sequelize.authenticate()
   .then(() => {
