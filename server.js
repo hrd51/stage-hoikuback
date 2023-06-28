@@ -19,7 +19,7 @@ app.use('/api/favorites', favoritesRouter);
 
 //APInurseriesのパスリクをnursery.jsで処理
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5432;
 
 // PostgreSQLへの接続設定
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
