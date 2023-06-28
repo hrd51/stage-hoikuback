@@ -27,8 +27,7 @@ Nursery.init({
   employmentType: {type: DataTypes.STRING, field: 'employmenttype'},
   homepage: DataTypes.STRING,
 },
- { sequelize, modelName: 'Nursery', tableName: 'nurseries', timestamps: false });
-
+{ sequelize, modelName: 'Nursery', tableName: 'Nurseries', timestamps: false });
 
 
 module.exports = Nursery;
