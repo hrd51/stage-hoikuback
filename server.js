@@ -19,7 +19,7 @@ app.use('/api/favorites', favoritesRouter);
 
 //APInurseriesのパスリクをnursery.jsで処理
 
-const port = process.env.PORT || 5432;
+const port = process.env.PORT || 3000;
 
 // PostgreSQLへの接続設定
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
@@ -38,10 +38,10 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 
 sequelize.authenticate()
   .then(() => {
-    console.log('Connection to SQLite has been established successfully.');
+    console.log('Connection to PostgreSQL has been established successfully.');
   })
   .catch(err => {
-    console.error('Unable to connect to SQLite:', err);
+    console.error('Unable to connect to PostgreSQL:', err);
   });
 
 
