@@ -24,7 +24,7 @@ Nursery.init({
   city: DataTypes.STRING,
   operator: DataTypes.STRING,
   salary: DataTypes.STRING,
-  employmentType: {type: DataTypes.STRING, field: 'employmenttype'},
+  employmentType: {type: DataTypes.STRING, field: 'employmentType'},
   homepage: DataTypes.STRING,
 },
 { sequelize, modelName: 'Nursery', tableName: 'Nurseries', timestamps: false });
