@@ -11,7 +11,7 @@ const nurseriesRouter = require('./routes/nurseries');
 const favoritesRouter = require('./routes/favorites');
 
 app.use(cors({
-  origin: 'https://hoiku-front1.vercel.app', //アクセス許可するオリジンをローカルのものに変更
+  origin: 'https://hoiku-front1.vercel.app', 
   credentials: true, //レスポンスヘッダーにAccess-Control-Allow-Credentials追加
   // optionsSuccessStatus: 200 //レスポンスstatusを200に設定
 }))
