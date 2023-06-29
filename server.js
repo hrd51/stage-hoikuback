@@ -43,8 +43,10 @@ app.use('/api/favorites', favoritesRouter);
 // Error handler middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
+  res.header('Access-Control-Allow-Origin', '*');  // <-- CORS header
   res.status(500).send('Something broke!');
 });
+
 
 const port = process.env.PORT || 3000;
 
