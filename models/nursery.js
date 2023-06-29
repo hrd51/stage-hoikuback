@@ -1,20 +1,8 @@
+// models/nursery.js
+
 'use strict';
-const { Sequelize, Model, DataTypes } = require('sequelize');
-const config = require('../config/config.json');
-
-// const sequelize = require('../server')
-
-// console.log('sequelize = ', sequelize2)
-const env = process.env.NODE_ENV || 'development';
-console.log("process.env 2", process.env.DATABASE_URL );
-
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: 'postgres',
-  protocol: 'postgres',
-  // sslを無効化
-  dialectOptions: {},
-  logging: false,
-});
+const { Model, DataTypes } = require('sequelize');
+const { sequelize } = require('../server.js'); // Use the sequelize instance from server.js
 
 class Nursery extends Model {}
 
@@ -28,6 +16,5 @@ Nursery.init({
   homepage: DataTypes.STRING,
 },
 { sequelize, modelName: 'Nursery', tableName: 'Nurseries', timestamps: false });
-
 
 module.exports = Nursery;

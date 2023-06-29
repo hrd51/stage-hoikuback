@@ -1,9 +1,6 @@
 'use strict';
-const { Sequelize, Model, DataTypes } = require('sequelize');
-const config = require('../config/config.json');
-
-const env = process.env.NODE_ENV || 'development';
-const sequelize = new Sequelize(config[env]);
+const { Model, DataTypes } = require('sequelize');
+const { sequelize } = require('../server.js'); // Use the sequelize instance from server.js
 
 class Favorite extends Model {}
 

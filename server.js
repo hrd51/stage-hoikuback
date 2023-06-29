@@ -22,7 +22,7 @@ app.use('/api/favorites', favoritesRouter);
 
 //APInurseriesのパスリクをnursery.jsで処理
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5432;
 
 console.log("process.env", process.env.DATABASE_URL );
 // PostgreSQLへの接続設定
