@@ -1,6 +1,6 @@
 'use strict';
 const { Model, DataTypes } = require('sequelize');
-const { sequelize } = require('../server.js'); // Use the sequelize instance from server.js
+const sequelize = require('../sequelize'); // Use the sequelize instance from sequelize.js
 
 class Favorite extends Model {}
 
