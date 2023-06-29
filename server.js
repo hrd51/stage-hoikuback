@@ -22,7 +22,7 @@ app.use(cors({
   origin: function (origin, callback) {
     const allowedOrigins = [
       'https://hoiku-front1.vercel.app',
-      'https://hoiku-front1.vercel.app/favorites'
+      'https://hoiku-front1.vercel.app/api/favorites'
       // 他の許可するオリジンを追加
     ];
     // originが許可するリストに存在しない場合、CORSエラーを生成
