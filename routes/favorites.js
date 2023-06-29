@@ -22,8 +22,8 @@ router.post('/', async (req, res) => {
   // Check if the favorite already exists
   const existingFavorite = await Favorite.findOne({
     where: {
-      user_id: req.body.userId,
-      nursery_id: req.body.nurseryId
+      user_id: req.body.user_id, //修正：プロパティ名は"userId"ではなく"user_id"
+      nursery_id: req.body.nursery_id //修正：プロパティ名は"nurseryId"ではなく"nursery_id"
     }
   });
 
@@ -33,20 +33,20 @@ router.post('/', async (req, res) => {
   } else {
     // Otherwise, create the new favorite
     const newFavorite = await Favorite.create({
-      user_id: req.body.userId,
-      nursery_id: req.body.nurseryId
+      user_id: req.body.user_id, //修正：プロパティ名は"userId"ではなく"user_id"
+      nursery_id: req.body.nursery_id //修正：プロパティ名は"nurseryId"ではなく"nursery_id"
     });
     res.json(newFavorite);
   }
 });
 
 // Delete a favorite
-router.delete('/:userId/:nurseryId', async (req, res) => {
+router.delete('/', async (req, res) => { //修正：ここではURLパラメータを使用しない
   // Find the favorite to delete
   const favorite = await Favorite.findOne({
     where: {
-      user_id: req.params.userId,
-      nursery_id: req.params.nurseryId
+      user_id: req.body.user_id, //修正：プロパティ名は"userId"ではなく"user_id"
+      nursery_id: req.body.nursery_id //修正：プロパティ名は"nurseryId"ではなく"nursery_id"
     }
   });
 
