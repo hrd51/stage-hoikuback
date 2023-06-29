@@ -1,5 +1,3 @@
-// models/nursery.js
-
 'use strict';
 const { Model, DataTypes } = require('sequelize');
 const { sequelize } = require('../server.js'); // Use the sequelize instance from server.js
