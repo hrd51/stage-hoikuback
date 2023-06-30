@@ -1,8 +1,7 @@
 {
   "development": {
-    "use_env_variable": "DATABASE_URL",
-    "dialect": "postgres",
-    "protocol": "postgres"
+    "dialect": "sqlite",
+    "storage": "db.development.sqlite"
   },
   "test": {
     "use_env_variable": "DATABASE_URL",

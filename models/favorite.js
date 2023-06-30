@@ -1,15 +1,23 @@
 'use strict';
-const { Model, DataTypes } = require('sequelize');
+const { Association, DataTypes, HasManyAddAssociationMixin, HasManyCountAssociationsMixin,
+  HasManyCreateAssociationMixin, HasManyGetAssociationsMixin, HasManyHasAssociationMixin,
+  HasManySetAssociationsMixin, HasManyAddAssociationsMixin, HasManyHasAssociationsMixin,
+  HasManyRemoveAssociationMixin, HasManyRemoveAssociationsMixin, Model, ModelDefined, Optional,
+  Sequelize, InferAttributes, InferCreationAttributes, CreationOptional, NonAttribute, ForeignKey } = require('sequelize');
 const sequelize = require('../sequelize'); // Use the sequelize instance from sequelize.js
-const Nursery = require('./nursery'); // Import 'Nursery' model
 
 class Favorite extends Model {}
 
 Favorite.init({
+  // id: {
+  //   type: DataTypes.INTEGER,
+  //   primaryKey: true,
+  // },
   user_id: DataTypes.STRING,
-  nursery_id: DataTypes.INTEGER,
+  // nursery_id: DataTypes.INTEGER,
 }, { sequelize, modelName: 'Favorite', tableName: 'Favorites', timestamps: false });
 
-Favorite.belongsTo(Nursery, { foreignKey: 'nursery_id' }); // Use imported 'Nursery' model
+// Favorite.nursery = Favorite.belongsTo(Nursery); // Use imported 'Nursery' model
+
 
 module.exports = Favorite;
