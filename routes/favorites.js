@@ -1,21 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const Favorite = require('../models/favorites');
+const Favorite = require('../models/favorite');
 const Nursery = require('../models/nursery');
 
 // Get all favorites for a user
 router.get('/:userId', async (req, res) => {
-  const favorites = await Favorite.findAll({
-    where: {
-      user_id: req.params.userId
-    },
-    include: [{
-      model: Nursery
-    }]
-  });
-  res.json(favorites);
-  console.log(favorites)
+  try {
+    const favorites = await Favorite.findAll({
+      where: {
+        user_id: req.params.userId
+      },
+      include: [{
+        model: Nursery
+      }]
+    });
+    if (!favorites) {
+      res.status(404).json({ message: "Favorites not found" });
+    } else {
+      res.json(favorites);
+      console.log(favorites)
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "An error occurred while retrieving favorites" });
+  }
 });
+
 
 // Add a favorite
 router.post('/', async (req, res) => {

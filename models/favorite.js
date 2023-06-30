@@ -8,6 +8,6 @@ Favorite.init({
   user_id: DataTypes.STRING,
   nursery_id: DataTypes.INTEGER,
 },
- { sequelize, modelName: 'Favorite', timestamps: false });
+ { sequelize, modelName: 'Favorite', tableName: 'Favorites', timestamps: false });
 
 module.exports = Favorite;
