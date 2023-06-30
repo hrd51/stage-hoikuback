@@ -4,10 +4,6 @@ const sequelize = require('../sequelize'); // Use the sequelize instance from se
 
 class Nursery extends Model {}
 
-Favorite.belongsTo(Nursery, { foreignKey: 'nursery_id' });
-Nursery.hasMany(Favorite, { foreignKey: 'nursery_id' });
-
-
 Nursery.init({
   name: DataTypes.STRING,
   prefecture: DataTypes.STRING,
