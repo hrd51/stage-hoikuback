@@ -4,6 +4,23 @@ const sequelize = require('../sequelize'); // Use the sequelize instance from se
 
 class Nursery extends Model {}
 
+module.exports = (sequelize, DataTypes) => {
+  const Nursery = sequelize.define('Nursery', {
+    // Your existing attributes here...
+  }, {});
+
+  Nursery.associate = function(models) {
+    // associations can be defined here
+    Nursery.hasMany(models.Favorite, { foreignKey: 'nursery_id' });
+  };
+
+  return Nursery;
+};
+
+
+Favorite.belongsTo(Nursery, { foreignKey: 'nursery_id' });
+Nursery.hasMany(Favorite, { foreignKey: 'nursery_id' });
+
 Nursery.init({
   name: DataTypes.STRING,
   prefecture: DataTypes.STRING,
