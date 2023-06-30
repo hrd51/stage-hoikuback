@@ -4,7 +4,7 @@ const Favorite = require('../models/favorite');
 const Nursery = require('../models/nursery');
 
 // Get all favorites for a user
-router.get('/:userId', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const favorites = await Favorite.findAll({
       where: {
