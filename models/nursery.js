@@ -1,7 +1,7 @@
 'use strict';
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../sequelize'); // Use the sequelize instance from sequelize.js
-const Favorite = require('../models/favorite'); // Import 'Favorite' model
+const Favorite = require('./favorite'); // Import 'Favorite' model
 
 class Nursery extends Model {}
 
@@ -15,9 +15,6 @@ Nursery.init({
   homepage: DataTypes.STRING,
 }, { sequelize, modelName: 'Nursery', tableName: 'Nurseries', timestamps: false });
 
-Nursery.associate = function(models) {
-  // associations can be defined here
-  Nursery.hasMany(models.Favorite, { foreignKey: 'nursery_id' });
-};
+Nursery.hasMany(Favorite, { foreignKey: 'nursery_id' }); // Use imported 'Favorite' model
 
 module.exports = Nursery;
