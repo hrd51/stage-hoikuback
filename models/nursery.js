@@ -1,6 +1,7 @@
 'use strict';
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../sequelize'); // Use the sequelize instance from sequelize.js
+const Favorite = require('../models/favorite'); //意味わからんけどここにおく
 
 class Nursery extends Model {}
 
