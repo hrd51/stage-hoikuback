@@ -3,6 +3,7 @@ const router = express.Router();
 const Favorite = require('../models/favorite');
 const Nursery = require('../models/nursery');
 
+
 // Get all favorites for a user
 router.get('/', async (req, res) => {
   try {
@@ -52,7 +53,7 @@ router.post('/', async (req, res) => {
 });
 
 // Delete a favorite
-router.delete('/', async (req, res) => { //修正：ここではURLパラメータを使用しない
+router.delete('/', async (req, res) => { 
   console.log(`DELETE /${req.params.userId}/${req.params.nurseryId} received`);
   // Find the favorite to delete
   const favorite = await Favorite.findOne({
