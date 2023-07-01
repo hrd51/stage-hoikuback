@@ -11,6 +11,7 @@ app.use(
   cors({
     origin: function (origin, callback) {
       const allowedOrigins = [
+        // 'http://localhost:3001'
         'https://hoiku-front1.vercel.app',
         // 他の許可するオリジンを追加
       ];
