@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 // const Nursery = require('../models/nursery');
 
 // Get all favorites for a user
-router.get('/', async (req, res) => {
+router.get('/:userId', async (req, res) => {
   try {
     const favorites = await prisma.favorite.findMany({
       where: {
@@ -17,9 +17,14 @@ router.get('/', async (req, res) => {
         nursery: true,
       },
     });
+<<<<<<< HEAD
 
     if (!favorites) {
       res.status(404).json({ message: 'Favorites not found' });
+=======
+    if (!favorites || favorites.length === 0) {
+      res.status(404).json({ message: "Favorites not found" });
+>>>>>>> 3ea5df09ba214c275abe13c5d4f61c7e900531c1
     } else {
       res.json(favorites);
       console.log(favorites);
@@ -32,6 +37,11 @@ router.get('/', async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3ea5df09ba214c275abe13c5d4f61c7e900531c1
 // Add a favorite
 router.post('/', async (req, res) => {
   console.log('POST / received');
