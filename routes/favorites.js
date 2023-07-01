@@ -1,76 +1,90 @@
 const express = require('express');
 const router = express.Router();
-const Favorite = require('../models/favorite');
-const Nursery = require('../models/nursery');
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
+// const Favorite = require('../models/favorite');
+// const Nursery = require('../models/nursery');
 
 // Get all favorites for a user
 router.get('/:userId', async (req, res) => {
   try {
-    const favorites = await Favorite.findAll({
+    const favorites = await prisma.favorite.findMany({
       where: {
-        user_id: req.params.userId
+        user_id: req.params.userId,
       },
-      include: [{
-        model: Nursery
-      }]
+      include: {
+        nursery: true,
+      },
     });
+<<<<<<< HEAD
+
+    if (!favorites) {
+      res.status(404).json({ message: 'Favorites not found' });
+=======
     if (!favorites || favorites.length === 0) {
       res.status(404).json({ message: "Favorites not found" });
+>>>>>>> 3ea5df09ba214c275abe13c5d4f61c7e900531c1
     } else {
       res.json(favorites);
-      console.log(favorites)
+      console.log(favorites);
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "An error occurred while retrieving favorites" });
+    res
+      .status(500)
+      .json({ message: 'An error occurred while retrieving favorites' });
   }
 });
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 3ea5df09ba214c275abe13c5d4f61c7e900531c1
 // Add a favorite
 router.post('/', async (req, res) => {
   console.log('POST / received');
   // Check if the favorite already exists
-  const existingFavorite = await Favorite.findOne({
+  const existingFavorite = await prisma.favorite.findMany({
     where: {
-      user_id: req.body.user_id, 
-      nursery_id: req.body.nursery_id
-    }
+      user_id: req.body.user_id,
+      nursery_id: req.body.nursery_id,
+    },
   });
 
   if (existingFavorite) {
     // If the favorite already exists, send an appropriate response
-    res.status(400).json({ message: "Favorite already exists" });
+    res.status(400).json({ message: 'Favorite already exists' });
   } else {
     // Otherwise, create the new favorite
     const newFavorite = await Favorite.create({
-      user_id: req.body.user_id, 
-      nursery_id: req.body.nursery_id
+      user_id: req.body.user_id,
+      nursery_id: req.body.nursery_id,
     });
     res.json(newFavorite);
   }
 });
 
 // Delete a favorite
-router.delete('/', async (req, res) => { 
-  console.log(`DELETE /${req.params.userId}/${req.params.nurseryId} received`);
-  // Find the favorite to delete
-  const favorite = await Favorite.findOne({
+router.delete('/', async (req, res) => {
+  console.log(`DELETE received`);
+  // console.log(`DELETE /${req.params.userId}/${req.params.nurseryId} received`);
+  // // Find the favorite to delete
+  const favorite = await prisma.favorite.findOne({
     where: {
-      user_id: req.body.user_id, 
-      nursery_id: req.body.nursery_id
-    }
+      user_id: req.body.user_id,
+      nursery_id: req.body.nursery_id,
+    },
   });
 
   if (favorite) {
     // If the favorite exists, delete it
     await favorite.destroy();
-    res.json({ message: "Favorite removed" });
+    res.json({ message: 'Favorite removed' });
   } else {
     // Otherwise, send an appropriate response
-    res.status(404).json({ message: "Favorite not found" });
+    res.status(404).json({ message: 'Favorite not found' });
   }
 });
 
