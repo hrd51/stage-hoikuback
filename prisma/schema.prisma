@@ -11,14 +11,14 @@ datasource db {
 }
 
 model Nursery {
-  id             Int    @id @default(autoincrement())
-  name           String
-  prefecture     String
-  city           String
-  operator       String
-  salary         String
-  employmentType String
-  homepage       String
+  id             Int     @id @default(autoincrement())
+  name           String?
+  prefecture     String?
+  city           String?
+  operator       String?
+  salary         String?
+  employmentType String?
+  homepage       String?
 
   favorites Favorite[]
 
