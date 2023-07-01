@@ -5,7 +5,7 @@ const Nursery = require('../models/nursery');
 
 
 // Get all favorites for a user
-router.get('/', async (req, res) => {
+router.get('/:userId', async (req, res) => {
   try {
     const favorites = await Favorite.findAll({
       where: {
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
         model: Nursery
       }]
     });
-    if (!favorites) {
+    if (!favorites || favorites.length === 0) {
       res.status(404).json({ message: "Favorites not found" });
     } else {
       res.json(favorites);
@@ -26,6 +26,7 @@ router.get('/', async (req, res) => {
     res.status(500).json({ message: "An error occurred while retrieving favorites" });
   }
 });
+
 
 
 // Add a favorite
