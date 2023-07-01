@@ -25,7 +25,7 @@ app.use(
     credentials: true,
   })
 );
-
+//
 console.log('process.env', process.env.DATABASE_URL);
 // console.log('sequelize instance: ', sequelize);
 
