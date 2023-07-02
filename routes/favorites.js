@@ -35,7 +35,7 @@ router.get('/:userId', async (req, res) => {
 router.post('/', async (req, res) => {
   console.log('POST / received');
   // Check if the favorite already exists
-  const existingFavorite = await prisma.favorite.findMany({
+  const existingFavorite = await prisma.favorite.findfirst({  //findmanyから変更
     where: {
       user_id: req.body.user_id,
       nursery_id: req.body.nursery_id,
@@ -60,7 +60,7 @@ router.delete('/', async (req, res) => {
   console.log(`DELETE received`);
   // console.log(`DELETE /${req.params.userId}/${req.params.nurseryId} received`);
   // // Find the favorite to delete
-  const favorite = await prisma.favorite.findOne({
+  const favorite = await prisma.favorite.findfirst({
     where: {
       user_id: req.body.user_id,
       nursery_id: req.body.nursery_id,
