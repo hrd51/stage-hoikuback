@@ -35,7 +35,7 @@ router.get('/:userId', async (req, res) => {
 router.post('/', async (req, res) => {
   console.log('POST / received');
   // Check if the favorite already exists
-  const existingFavorite = await prisma.favorite.findfirst({  //findmanyから変更
+  const existingFavorite = await prisma.favorite.findFirst({  //findmanyから変更
     where: {
       user_id: req.body.user_id,
       nursery_id: req.body.nursery_id,
