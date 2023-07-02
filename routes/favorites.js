@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
     res.status(400).json({ message: 'Favorite already exists' });
   } else {
     // Otherwise, create the new favorite
-    const newFavorite = await Favorite.create({
+    const newFavorite = await prisma.Favorite.create({
       user_id: req.body.user_id,
       nursery_id: req.body.nursery_id,
     });
