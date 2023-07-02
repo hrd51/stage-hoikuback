@@ -19,6 +19,7 @@ model Nursery {
   salary         String?
   employmentType String?
   homepage       String?
+  company String?
 
   favorites Favorite[]
 
