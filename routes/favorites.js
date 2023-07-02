@@ -73,10 +73,7 @@ router.delete('/', async (req, res) => {
   if (favorite) {
     // If the favorite exists, delete it
     await prisma.favorite.delete({
-      where: {
-        user_id: req.body.user_id,
-        nursery_id: req.body.nursery_id,
-      },
+      where: { id: favorite.id },  // Using the unique id of the favorite
     });
     res.json({ message: 'Favorite removed' });
   } else {
@@ -84,6 +81,7 @@ router.delete('/', async (req, res) => {
     res.status(404).json({ message: 'Favorite not found' });
   }
 });
+
 
 
 module.exports = router;
