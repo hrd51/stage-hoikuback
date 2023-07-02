@@ -61,8 +61,9 @@ router.post('/', async (req, res) => {
 router.delete('/', async (req, res) => {
   console.log(`DELETE received`);
   // console.log(`DELETE /${req.params.userId}/${req.params.nurseryId} received`);
-  // // Find the favorite to delete
-  const favorite = await prisma.favorite.findFirst({  //findOneから変更
+  
+  // Check if the favorite to delete exists
+  const favorite = await prisma.favorite.findFirst({
     where: {
       user_id: req.body.user_id,
       nursery_id: req.body.nursery_id,
@@ -71,12 +72,18 @@ router.delete('/', async (req, res) => {
 
   if (favorite) {
     // If the favorite exists, delete it
-    await favorite.destroy();
+    await prisma.favorite.delete({
+      where: {
+        user_id: req.body.user_id,
+        nursery_id: req.body.nursery_id,
+      },
+    });
     res.json({ message: 'Favorite removed' });
   } else {
-    // Otherwise, send an appropriate response
+    // If the favorite does not exist, send an appropriate response
     res.status(404).json({ message: 'Favorite not found' });
   }
 });
+
 
 module.exports = router;
