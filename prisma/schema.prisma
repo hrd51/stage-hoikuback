@@ -20,6 +20,7 @@ model Nursery {
   employmentType String?
   homepage       String?
   company String?
+  about String?
 
   favorites Favorite[]
 
