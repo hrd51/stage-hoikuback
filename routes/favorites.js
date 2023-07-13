@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 // const Nursery = require('../models/nursery');
 
 // Get all favorites for a user
-router.get('/:userId', async (req, res) => {
+router.get('/favorites/:userId', async (req, res) => {
   try {
     const favorites = await prisma.favorite.findMany({
       where: {
@@ -35,7 +35,7 @@ router.get('/:userId', async (req, res) => {
 router.post('/', async (req, res) => {
   console.log('POST / received');
   // Check if the favorite already exists
-  const existingFavorite = await prisma.favorite.findMany({  //findmanyから変更
+  const existingFavorite = await prisma.favorite.findMany({ 
     where: {
       user_id: req.body.user_id,
       nursery_id: req.body.nursery_id,
