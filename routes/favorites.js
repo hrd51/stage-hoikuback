@@ -58,7 +58,9 @@ router.post('/', async (req, res) => {
 });
 
 // Delete a favorite
+
 router.delete('/:userId/:nurseryId', async (req, res) => {
+// router.delete('/', async (req, res) => {
   console.log(`DELETE received`);
   // console.log(`DELETE /${req.params.userId}/${req.params.nurseryId} received`);
   
