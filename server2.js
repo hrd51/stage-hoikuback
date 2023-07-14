@@ -12,9 +12,8 @@ app.use(
     origin: function (origin, callback) {
       const allowedOrigins = [
         // 'http://localhost:3001',
-        'https://stage-hoiku-zknj.vercel.app'
+        'https://stage-hoiku-zknj.vercel.app',
        
-        // 他の許可するオリジンを追加
       ];
       // originが許可するリストに存在しない場合、CORSエラーを生成
       if (!origin || allowedOrigins.indexOf(new URL(origin).origin) !== -1) {
