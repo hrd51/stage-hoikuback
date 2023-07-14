@@ -11,8 +11,8 @@ app.use(
   cors({
     origin: function (origin, callback) {
       const allowedOrigins = [
-        // 'http://localhost:3001',
-        'https://hoiku-front1.vercel.app',
+        'http://localhost:3001',
+       
         // 他の許可するオリジンを追加
       ];
       // originが許可するリストに存在しない場合、CORSエラーを生成
@@ -27,15 +27,7 @@ app.use(
 );
 //
 console.log('process.env', process.env.DATABASE_URL);
-// console.log('sequelize instance: ', sequelize);
 
-// sequelize.authenticate()
-//   .then(() => {
-//     console.log('Connection to PostgreSQL has been established successfully.');
-//   })
-//   .catch(err => {
-//     console.error('Unable to connect to PostgreSQL:', err);
-//   });
 
 const nurseriesRouter = require('./routes/nurseries');
 const favoritesRouter = require('./routes/favorites');
